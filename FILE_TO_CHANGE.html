@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='lib/jquery.min.js'></script>
+<!--
+// Removing since not doing drag/drop
+<script src='lib/jquery-ui.custom.min.js'></script> 
+-->
+<script src='fullcalendar/fullcalendar.min.js'></script>
+<!-- current gcal url feed processing -->
+<script src='fullcalendar/gcal.js'></script>
+<!-- theme example -->
+<link rel='stylesheet' href='demos/cupertino/jquery-ui.min.css' />
+<script>
+
+	$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			theme: true,
+			editable: false,
+			minTime: '7:00am',
+            maxTime: '5:00pm',
+            weekMode: 'liquid',
+			header: {
+                    left: 'title prev,next',
+                    center: '',
+                    right: 'today month,agendaWeek,agendaDay,list '
+                },
+			eventSources: [
+                    { 
+						// http://arshaw.com/fullcalendar/docs/google_calendar/
+						url: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
+						color: 'orange',
+						className: 'gcal-eventset-1',
+						currentTimezone: 'America/Chicago'
+						
+                    },
+                    { 
+						url: 'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
+						color: 'green',
+						className: 'gcal-eventset-2',
+						currentTimezone: 'America/Chicago'
+                    },
+                    { 
+						events: [
+							{
+								title: 'All Day Event',
+								start: new Date(y, m, 1),
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Long Event',
+								start: new Date(y, m, d-5),
+								end: new Date(y, m, d-2),
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Santa',
+								start: new Date(y, m, 25, 4, 0),
+								end: new Date(y, m, 25, 6, 0),
+								allDay: false,
+								color: 'red',
+								url: 'http://google.com/'
+							},
+							{
+								id: 999,
+								title: 'Repeating Event',
+								start: new Date(y, m, d-3, 16, 0),
+								allDay: false,
+								url: 'http://google.com/'
+							},
+							{
+								id: 999,
+								title: 'Repeating Event',
+								start: new Date(y, m, d+4, 16, 0),
+								allDay: false,
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Meeting',
+								start: new Date(y, m, d, 10, 30),
+								allDay: false,
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Lunch',
+								start: new Date(y, m, d, 12, 0),
+								end: new Date(y, m, d, 14, 0),
+								allDay: false,
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Birthday Party',
+								start: new Date(y, m, d+1, 19, 0),
+								end: new Date(y, m, d+1, 22, 30),
+								allDay: false,
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Click for Google',
+								start: new Date(y, m, 28),
+								end: new Date(y, m, 29),
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 4, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'lightblue',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 4, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'blue',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 4, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'lightgrey',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 4, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'grey',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 8, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'pink',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 8, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'magenta',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 5, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'blue',
+								url: 'http://google.com/'
+							},
+							{
+								title: 'Sample Event with a long name to see what happens',
+								start: new Date(y, m, d, 5, 0),
+								end: new Date(y, m, d, 6, 0),
+								allDay: false,
+								color: 'green',
+								url: 'http://google.com/'
+							}
+						]
+					}
+					]
+		});
+		
+	});
+
+</script>
+<style>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
